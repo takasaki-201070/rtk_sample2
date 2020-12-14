@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 84px);
+}
+.list {
+  flex: "1 1 auto";
+  width: 35%;
+  min-height: 0px;
+  overflow-y: scroll;
+}
+.dtail {
+  flex: "1 1 auto";
+  width: 65%;
+}

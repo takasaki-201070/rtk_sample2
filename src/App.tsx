@@ -1,56 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+import styles from "./App.module.css";
+import Header from "./layouts/main/Header";
+import LeftSideList from "./layouts/main/LeftSideList";
+import Counter from "./views/ReduxToolKit1";
+import {
+  reactlinkitem,
+  webapilinkitem,
+  ReduxLinkitem,
+  MaterialListitem,
+  LibListitem,
+} from "./views/Router";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className={styles.App}>
+      <BrowserRouter>
+        {" "}
+        <Header />
+        <LeftSideList />
+        <div className={styles.root}>
+          <div className={styles.dummyrow} />
+          <Route exact path="/" component={Counter} />
+
+          {reactlinkitem.map((linkitem) => (
+            <Route
+              exact
+              key={linkitem.id}
+              path={`/${linkitem.key}`}
+              component={linkitem.componet}
+            />
+          ))}
+          {webapilinkitem.map((linkitem) => (
+            <Route
+              exact
+              key={linkitem.id}
+              path={`/${linkitem.key}`}
+              component={linkitem.componet}
+            />
+          ))}
+          {ReduxLinkitem.map((linkitem) => (
+            <Route
+              exact
+              key={linkitem.id}
+              path={`/${linkitem.key}`}
+              component={linkitem.componet}
+            />
+          ))}
+          {MaterialListitem.map((linkitem) => (
+            <Route
+              exact
+              key={linkitem.id}
+              path={`/${linkitem.key}`}
+              component={linkitem.componet}
+            />
+          ))}
+          {LibListitem.map((linkitem) => (
+            <Route
+              exact
+              key={linkitem.id}
+              path={`/${linkitem.key}`}
+              component={linkitem.componet}
+            />
+          ))}
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
